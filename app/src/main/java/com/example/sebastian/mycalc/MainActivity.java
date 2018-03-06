@@ -11,7 +11,7 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewSum = null;
-    String operation = "";
+    TextView textViewDebug = null;
     Double aNumb = 0.0;
     Double bNumb = 0.0;
     Boolean isOld = false;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textViewSum = (TextView)findViewById(R.id.textViewSum);
-        final TextView textViewDebug = (TextView)findViewById(R.id.textViewDebug);
+        textViewDebug = (TextView)findViewById(R.id.textViewDebug);
 
         final Button button0 = (Button) findViewById(R.id.button0);
         Button button1 = (Button)findViewById(R.id.button1);
@@ -83,9 +83,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!lastClick.equals("add")) {
-                    if (!operation.equals("add") && !operation.equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("+") && !textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    else if(isOld);
                     else {
                         aNumb += Double.parseDouble(textViewSum.getText().toString());
                         setTextViewNumb(aNumb);
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     bNumb = 0.0;
-                    operation = "add";
+                    textViewDebug.setText("+");
                     isOld = true;
                     buttonSum.setEnabled(true);
                 }
@@ -107,9 +108,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("odd")) {
-                    if (!operation.equals("odd") && !operation.equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("-") && !textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    else if(isOld);
                     else {
                         aNumb -= Double.parseDouble(textViewSum.getText().toString());
                         setTextViewNumb(aNumb);
@@ -117,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     bNumb = 0.0;
-                    operation = "odd";
+                    textViewDebug.setText("-");
                     isOld = true;
                     buttonSum.setEnabled(true);
                 }
@@ -130,9 +132,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("mult")) {
-                    if (!operation.equals("mult") && !operation.equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("*") && !textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    else if(isOld);
                     else {
                         aNumb *= Double.parseDouble(textViewSum.getText().toString());
                         setTextViewNumb(aNumb);
@@ -140,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     bNumb = 0.0;
-                    operation = "mult";
+                    textViewDebug.setText("*");
                     isOld = true;
                     buttonSum.setEnabled(true);
                 }
@@ -153,9 +156,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("dev")) {
-                    if (!operation.equals("dev") && !operation.equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("/") && !textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    else if(isOld);
                     else {
                         aNumb /= Double.parseDouble(textViewSum.getText().toString());
                         setTextViewNumb(aNumb);
@@ -163,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     bNumb = 0.0;
-                    operation = "dev";
+                    textViewDebug.setText("/");
                     isOld = true;
                     buttonSum.setEnabled(true);
                 }
@@ -204,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 aNumb = 0.0;
                 bNumb = 0.0;
-                operation = "";
+                textViewDebug.setText("");
                 isOld = false;
                 lastClick = "";
                 textViewSum.setText("");
@@ -223,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(lastClick.equals("sum")){
                     aNumb = 0.0;
-                    operation = "";
+                    textViewDebug.setText("");
                 }
                 if(isOld) {
                     textViewSum.setText("");
@@ -245,8 +249,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calc(){
-        switch (operation) {
-            case "add":
+        switch (textViewDebug.getText().toString()) {
+            case "+":
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
@@ -259,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 break;
-            case "odd":
+            case "-":
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
@@ -272,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 break;
-            case "mult":
+            case "*":
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
@@ -285,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 break;
-            case "dev":
+            case "/":
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
