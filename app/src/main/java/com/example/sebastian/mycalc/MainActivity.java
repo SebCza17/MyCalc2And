@@ -75,23 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        buttonSum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(textView.getText().equals("0.0") || textView.getText().equals("0")) {
-                    setTextViewNumb(aNumb);
-                    buttonSum.setEnabled(false);
-                    bNumb = 0.0;
-                    isOld = true;
-                    aNumb = 0.0;
-                }
-                else calc();
-
-                lastClick = "sum";
-            }
-        });
-
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,6 +167,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        buttonSum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(textView.getText().equals("0.0") || textView.getText().equals("0")) {
+                    setTextViewNumb(aNumb);
+                    buttonSum.setEnabled(false);
+                    bNumb = 0.0;
+                    isOld = true;
+                    aNumb = 0.0;
+                }
+                else calc();
+
+                lastClick = "sum";
+            }
+        });
+
+        buttonDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -206,6 +212,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if(lastClick.equals("sum")){
+                    aNumb = 0.0;
+                    operation = "";
+                }
                 if(isOld) {
                     textView.setText("");
                     bNumb = 0.0;
