@@ -1,5 +1,6 @@
 package com.example.sebastian.mycalc;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        switch (getResources().getConfiguration().orientation) {
+            case Configuration.ORIENTATION_PORTRAIT:
+                setContentView(R.layout.activity_main);
+                break;
+            case Configuration.ORIENTATION_LANDSCAPE:
+                setContentView(R.layout.activity_main2);
+                break;
+        }
 
         textViewSum = (TextView)findViewById(R.id.textViewSum);
         textViewDebug = (TextView)findViewById(R.id.textViewDebug);
