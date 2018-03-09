@@ -229,8 +229,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void ownOnClickNump(final Button button) {
@@ -332,6 +330,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTextViewNumb(Double number){
             textViewSum.setText(String.valueOf(number));
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        textViewDebug.setText(savedInstanceState.getString("textDebug"));
+        textViewSum.setText(savedInstanceState.getString("textSum"));
+        lastClick = savedInstanceState.getString("lastClick");
+
+        aNumb = savedInstanceState.getDouble("aNumb");
+        bNumb = savedInstanceState.getDouble("bNumb");
+
+        isOld = savedInstanceState.getBoolean("isOld");
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("textDebug", textViewDebug.getText().toString());
+        outState.putString("textSum", textViewSum.getText().toString());
+        outState.putString("lastClick", lastClick);
+
+        outState.putDouble("aNumb", aNumb);
+        outState.putDouble("bNumb", bNumb);
+
+        outState.putBoolean("isOld", isOld);
+
+
+        // call superclass to save any view hierarchy
+        super.onSaveInstanceState(outState);
     }
 
 
