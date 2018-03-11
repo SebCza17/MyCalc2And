@@ -220,6 +220,16 @@
             android:text="Clear"
             android:textSize="30sp" />
 
+        <Button
+            android:id="@+id/buttonPow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewDebug"
+            android:layout_toEndOf="@+id/buttonDev"
+            android:layout_toRightOf="@+id/buttonDev"
+            android:text="Power"
+            android:textSize="30sp" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
