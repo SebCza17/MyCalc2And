@@ -1,5 +1,6 @@
 package com.example.sebastian.mycalc;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
@@ -20,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
     String lastClick = "";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         switch (getResources().getConfiguration().orientation) {
             case Configuration.ORIENTATION_LANDSCAPE:
                 setContentView(R.layout.activity_main2);
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonDev = (Button)findViewById(R.id.buttonDev);
 
         Button buttonPower = (Button) findViewById(R.id.buttonPow);
+        Button buttonMod = (Button)findViewById(R.id.buttonMod);
 
         Button buttonDot = (Button)findViewById(R.id.buttonDot);
         Button buttonClear = (Button)findViewById(R.id.buttonClear);
@@ -196,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(textViewSum.getText().equals("0.0") || textViewSum.getText().equals("0") || textViewSum.getText().equals("")) {
+                if((textViewSum.getText().equals("0.0") || textViewSum.getText().equals("0") || textViewSum.getText().equals("")) && !textViewDebug.getText().equals("^")) {
                     setTextViewNumb(aNumb);
                     buttonSum.setEnabled(false);
                     bNumb = 0.0;
@@ -232,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
                         calc();
 
                     if (aNumb == 0.0)
-                        aNumb = 1.0;
+                        aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if (isOld) ;
                     else {
                         aNumb = Math.pow(aNumb, Double.parseDouble(textViewSum.getText().toString()));
@@ -246,6 +248,31 @@ public class MainActivity extends AppCompatActivity {
                 }
                 lastClick = "pow";
 
+            }
+        });
+
+        buttonMod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("mod") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("%") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+                    if (aNumb == 0.0)
+                        aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    else if (isOld) ;
+                    else {
+                        aNumb = Math.pow(aNumb, Double.parseDouble(textViewSum.getText().toString()));
+                        setTextViewNumb(aNumb);
+
+                    }
+                    textViewDebug.setText("%");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "mod";
             }
         });
 
@@ -337,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0 || bNumb == 0.0) textViewSum.setText("0.0");
+                    if (aNumb == 0.0) textViewSum.setText("0.0");
                     else {
                         aNumb /= bNumb;
                         setTextViewNumb(aNumb);
@@ -358,7 +385,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (bNumb != 0.0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0 || bNumb == 0.0) textViewSum.setText("0.0");
+                    if (aNumb == 0.0) textViewSum.setText("1");
                     else {
                         aNumb = Math.pow(aNumb, bNumb);
                         setTextViewNumb(aNumb);
@@ -366,9 +393,30 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     bNumb = Double.parseDouble(textViewSum.getText().toString());
                     if (aNumb == 0.0 || bNumb == 0.0) {
-                        textViewSum.setText("0");
+                        textViewSum.setText("1");
                     } else {
                         aNumb = Math.pow(aNumb, bNumb);
+                        setTextViewNumb(aNumb);
+                    }
+                }
+
+                break;
+
+            case "%":
+
+                if (bNumb != 0.0) {
+                    aNumb = Double.parseDouble(textViewSum.getText().toString());
+                    if (aNumb == 0.0) textViewSum.setText("1");
+                    else {
+                        aNumb = aNumb%bNumb;
+                        setTextViewNumb(aNumb);
+                    }
+                } else {
+                    bNumb = Double.parseDouble(textViewSum.getText().toString());
+                    if (aNumb == 0.0 || bNumb == 0.0) {
+                        textViewSum.setText("1");
+                    } else {
+                        aNumb = aNumb%bNumb;
                         setTextViewNumb(aNumb);
                     }
                 }

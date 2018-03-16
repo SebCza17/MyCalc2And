@@ -227,7 +227,17 @@
             android:layout_below="@+id/textViewDebug"
             android:layout_toEndOf="@+id/buttonDev"
             android:layout_toRightOf="@+id/buttonDev"
-            android:text="Power"
+            android:text="^"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonPow"
+            android:layout_toEndOf="@+id/buttonMult"
+            android:layout_toRightOf="@+id/buttonMult"
+            android:text="%"
             android:textSize="30sp" />
 
     </RelativeLayout>
