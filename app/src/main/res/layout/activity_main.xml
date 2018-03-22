@@ -253,6 +253,62 @@
             android:textSize="30sp"
             android:visibility="invisible" />
 
+        <Button
+            android:id="@+id/buttonFactorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/buttonMod"
+            android:layout_alignBottom="@+id/buttonMod"
+            android:layout_toEndOf="@+id/button8"
+            android:layout_toRightOf="@+id/button8"
+            android:text="!"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonSqrt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonDev"
+            android:layout_toEndOf="@+id/button9"
+            android:layout_toRightOf="@+id/button9"
+            android:text="Sqrt"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonSin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonPow"
+            android:layout_toLeftOf="@+id/buttonMod"
+            android:layout_toStartOf="@+id/buttonMod"
+            android:text="Sin"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonCos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonPow"
+            android:layout_toLeftOf="@+id/buttonFactorial"
+            android:layout_toStartOf="@+id/buttonFactorial"
+            android:text="Cos"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/buttonTan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonMod"
+            android:layout_toLeftOf="@+id/buttonSqrt"
+            android:layout_toStartOf="@+id/buttonSqrt"
+            android:text="Tan"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

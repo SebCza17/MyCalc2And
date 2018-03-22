@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Double aNumb = 0.0;
     Double bNumb = 0.0;
     Boolean isOld = false;
-    String lastClick = "";
+    String lastClick = "start";
 
 
     @Override
@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonPower = (Button) findViewById(R.id.buttonPow);
         Button buttonMod = (Button)findViewById(R.id.buttonMod);
+        Button buttonStrong = (Button)findViewById(R.id.buttonFactorial);
+        Button buttonSqrt = (Button)findViewById(R.id.buttonSqrt);
+        Button buttonSin = (Button)findViewById(R.id.buttonSin);
+        Button buttonCos = (Button)findViewById(R.id.buttonCos);
+        Button buttonTan = (Button)findViewById(R.id.buttonTan);
 
         Button buttonDot = (Button)findViewById(R.id.buttonDot);
         Button buttonClear = (Button)findViewById(R.id.buttonClear);
@@ -214,10 +219,12 @@ public class MainActivity extends AppCompatActivity {
         buttonDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Double.parseDouble(textViewSum.getText().toString()) % 1 == 0 && !textViewSum.getText().equals("0.0")) {
-                    textViewSum.setText(textViewSum.getText().toString() + ".");
-                    lastClick = "dot";
-                    isOld = false;
+                if(!textViewSum.getText().equals("") && !textViewSum.getText().toString().contains(".")) {
+                    if (Double.parseDouble(textViewSum.getText().toString()) % 1 == 0) {
+                        textViewSum.setText(textViewSum.getText() + ".");
+                        lastClick = "dot";
+                        isOld = false;
+                    }
 
                 }
             }
@@ -276,6 +283,129 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        buttonStrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("fact") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("!") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+                        Double tempNumb = Double.parseDouble(textViewSum.getText().toString());
+                        Integer intTempNumb = tempNumb.intValue();
+
+                        if(intTempNumb < 9999) {
+                            for (Integer i = intTempNumb - 1; i > 1; i--) tempNumb *= i;
+                            textViewSum.setText("" + tempNumb);
+                            aNumb = Double.parseDouble(textViewSum.getText().toString());
+                        }
+
+                    textViewDebug.setText("!");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "fact";
+            }
+        });
+
+        buttonSqrt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("sqrt") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("sqrt") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+                        Double tempNumb = Math.sqrt(Double.parseDouble(textViewSum.getText().toString()));
+
+                        textViewSum.setText("" + tempNumb);
+                        aNumb = Double.parseDouble(textViewSum.getText().toString());
+
+
+                    textViewDebug.setText("sqrt");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "sqrt";
+            }
+        });
+
+
+        buttonSin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("sin") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("sin") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+
+                        Double tempNumb = Math.sin(Double.parseDouble(textViewSum.getText().toString()));
+
+                        textViewSum.setText("" + tempNumb);
+                        aNumb = Double.parseDouble(textViewSum.getText().toString());
+
+
+                    textViewDebug.setText("sin");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "sin";
+            }
+        });
+
+        buttonCos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("cos") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("cos") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+
+                        Double tempNumb = Math.cos(Double.parseDouble(textViewSum.getText().toString()));
+
+                        textViewSum.setText("" + tempNumb);
+                        aNumb = Double.parseDouble(textViewSum.getText().toString());
+
+
+                    textViewDebug.setText("cos");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "cos";
+            }
+        });
+
+        buttonTan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("tan") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("tan") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+
+                    Double tempNumb = Math.tan(Double.parseDouble(textViewSum.getText().toString()));
+
+                    textViewSum.setText("" + tempNumb);
+                    aNumb = Double.parseDouble(textViewSum.getText().toString());
+
+
+                    textViewDebug.setText("tan");
+                    bNumb = 0.0;
+                    isOld = true;
+                    buttonSum.setEnabled(true);
+                }
+                lastClick = "tan";
+            }
+        });
+
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -283,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
                 bNumb = 0.0;
                 textViewDebug.setText("");
                 isOld = false;
-                lastClick = "";
+                lastClick = "start";
                 textViewSum.setText("");
                 buttonSum.setEnabled(true);
             }

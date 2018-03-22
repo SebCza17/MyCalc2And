@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sebastian.mycalc.Main2Activity">
+    tools:context="com.example.sebastian.mycalc.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -222,7 +222,7 @@
 
         <Button
             android:id="@+id/buttonPow"
-            android:layout_width="wrap_content"
+            android:layout_width="115dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewDebug"
             android:layout_toEndOf="@+id/buttonDev"
@@ -232,12 +232,64 @@
 
         <Button
             android:id="@+id/buttonMod"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonFactorial"
+            android:layout_alignEnd="@+id/buttonFactorial"
+            android:layout_alignRight="@+id/buttonFactorial"
+            android:text="%"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonFactorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonPow"
+            android:layout_above="@+id/buttonClear"
+            android:layout_alignEnd="@+id/buttonClear"
+            android:layout_alignRight="@+id/buttonClear"
             android:layout_toEndOf="@+id/buttonMult"
             android:layout_toRightOf="@+id/buttonMult"
-            android:text="%"
+            android:text="!"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonSqrt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewDebug"
+            android:layout_toEndOf="@+id/buttonPow"
+            android:layout_toRightOf="@+id/buttonPow"
+            android:text="Sqrt"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonSin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonPow"
+            android:layout_toEndOf="@+id/buttonPow"
+            android:layout_toRightOf="@+id/buttonPow"
+            android:text="Sin"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonCos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/buttonFactorial"
+            android:layout_toEndOf="@+id/buttonMod"
+            android:layout_toRightOf="@+id/buttonMod"
+            android:text="Cos"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonTan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonCos"
+            android:layout_toEndOf="@+id/buttonClear"
+            android:layout_toRightOf="@+id/buttonClear"
+            android:text="Tan"
             android:textSize="30sp" />
 
     </RelativeLayout>
