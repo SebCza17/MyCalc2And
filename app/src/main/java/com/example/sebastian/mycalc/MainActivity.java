@@ -1,15 +1,12 @@
 package com.example.sebastian.mycalc;
 
-import android.app.Notification;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     Double bNumb = 0.0;
     Boolean isOld = false;
     String lastClick = "start";
+
+
 
 
     @Override
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonTan = (Button)findViewById(R.id.buttonTan);
 
         Button buttonDot = (Button)findViewById(R.id.buttonDot);
-        Button buttonClear = (Button)findViewById(R.id.buttonClear);
+        final Button buttonClear = (Button)findViewById(R.id.buttonClear);
 
         ownOnClickNump(button1);
         ownOnClickNump(button2);
@@ -113,15 +112,12 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
                     else {
-                        aNumb += Double.parseDouble(textViewSum.getText().toString());
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("+");
+                        calc();
 
                     }
 
-                    bNumb = 0.0;
-                    textViewDebug.setText("+");
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("+");
                 }
                 lastClick = "add";
             }
@@ -133,20 +129,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("odd")  && !textViewSum.getText().equals("")) {
-                    if (!textViewDebug.getText().equals("-") && !textViewDebug.getText().equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("-") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    else if(isOld);
+                    else if (isOld) ;
                     else {
-                        aNumb -= Double.parseDouble(textViewSum.getText().toString());
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("-");
+                        calc();
 
                     }
 
-                    bNumb = 0.0;
-                    textViewDebug.setText("-");
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("-");
                 }
                 lastClick = "odd";
             }
@@ -162,15 +156,12 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
                     else {
-                        aNumb *= Double.parseDouble(textViewSum.getText().toString());
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("*");
+                        calc();
 
                     }
 
-                    bNumb = 0.0;
-                    textViewDebug.setText("*");
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("*");
                 }
                 lastClick = "mult";
             }
@@ -186,15 +177,12 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
                     else {
-                        aNumb /= Double.parseDouble(textViewSum.getText().toString());
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("/");
+                        calc();
 
                     }
 
-                    bNumb = 0.0;
-                    textViewDebug.setText("/");
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("/");
                 }
                 lastClick = "dev";
             }
@@ -203,14 +191,8 @@ public class MainActivity extends AppCompatActivity {
         buttonSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if((textViewSum.getText().equals("0.0") || textViewSum.getText().equals("0") || textViewSum.getText().equals("")) && !textViewDebug.getText().equals("^")) {
-                    setTextViewNumb(aNumb);
-                    buttonSum.setEnabled(false);
-                    bNumb = 0.0;
-                    isOld = true;
-                    aNumb = 0.0;
-                }
-                else calc();
+
+                calc();
 
                 lastClick = "sum";
             }
@@ -244,14 +226,11 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if (isOld) ;
                     else {
-                        aNumb = Math.pow(aNumb, Double.parseDouble(textViewSum.getText().toString()));
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("^");
+                        calc();
 
                     }
-                    textViewDebug.setText("^");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("^");
                 }
                 lastClick = "pow";
 
@@ -270,14 +249,11 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if (isOld) ;
                     else {
-                        aNumb = Math.pow(aNumb, Double.parseDouble(textViewSum.getText().toString()));
-                        setTextViewNumb(aNumb);
+                        textViewDebug.setText("%");
+                        calc();
 
                     }
-                    textViewDebug.setText("%");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("%");
                 }
                 lastClick = "mod";
             }
@@ -301,10 +277,7 @@ public class MainActivity extends AppCompatActivity {
                             aNumb = Double.parseDouble(textViewSum.getText().toString());
                         }
 
-                    textViewDebug.setText("!");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("!");
                 }
                 lastClick = "fact";
             }
@@ -324,10 +297,7 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
 
 
-                    textViewDebug.setText("sqrt");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("sqrt");
                 }
                 lastClick = "sqrt";
             }
@@ -349,10 +319,7 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
 
 
-                    textViewDebug.setText("sin");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("sin");
                 }
                 lastClick = "sin";
             }
@@ -373,10 +340,7 @@ public class MainActivity extends AppCompatActivity {
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
 
 
-                    textViewDebug.setText("cos");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                    if(isEnabled()) setParam("cos");
                 }
                 lastClick = "cos";
             }
@@ -397,10 +361,7 @@ public class MainActivity extends AppCompatActivity {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
 
 
-                    textViewDebug.setText("tan");
-                    bNumb = 0.0;
-                    isOld = true;
-                    buttonSum.setEnabled(true);
+                   if(isEnabled()) setParam("tan");
                 }
                 lastClick = "tan";
             }
@@ -415,10 +376,35 @@ public class MainActivity extends AppCompatActivity {
                 isOld = false;
                 lastClick = "start";
                 textViewSum.setText("");
-                buttonSum.setEnabled(true);
+                changeBlock(true);
             }
         });
 
+    }
+
+    private void setParam(String s) {
+        textViewDebug.setText(s);
+        bNumb = 0.0;
+        isOld = true;
+    }
+
+    private void changeBlock(boolean isEnabled){
+
+        RelativeLayout relativeLayoutButtons = (RelativeLayout)findViewById(R.id.relativeLayoutButtons);
+        Button buttonClear = (Button)findViewById(R.id.buttonClear);
+
+        for (int i = 0; i < relativeLayoutButtons.getChildCount(); i++) {
+            View child = relativeLayoutButtons.getChildAt(i);
+            child.setEnabled(isEnabled);
+        }
+
+        buttonClear.setEnabled(true);
+
+    }
+
+    private boolean isEnabled(){
+        Button buttonSample = (Button)findViewById(R.id.buttonSum);
+        return buttonSample.isEnabled();
     }
 
     private void ownOnClickNump(final Button button) {
@@ -453,7 +439,7 @@ public class MainActivity extends AppCompatActivity {
         switch (textViewDebug.getText().toString()) {
             case "+":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
                     aNumb += bNumb;
                     setTextViewNumb(aNumb);
@@ -466,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "-":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
                     aNumb -= bNumb;
                     setTextViewNumb(aNumb);
@@ -479,7 +465,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "*":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
                     aNumb *= bNumb;
                     setTextViewNumb(aNumb);
@@ -492,17 +478,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "/":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0) textViewSum.setText("0.0");
-                    else {
+                    if (aNumb != 0) {
                         aNumb /= bNumb;
                         setTextViewNumb(aNumb);
                     }
                 } else {
                     bNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0 || bNumb == 0.0) {
-                        textViewSum.setText("0");
+                    if (aNumb == 0 || bNumb == 0) {
+                        changeBlock(false);
+                        textViewDebug.setText("Nie Dziel przez 0 Debilu");
                     } else {
                         aNumb /= bNumb;
                         setTextViewNumb(aNumb);
@@ -513,16 +499,16 @@ public class MainActivity extends AppCompatActivity {
 
             case "^":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0) textViewSum.setText("1");
+                    if (aNumb == 0) textViewSum.setText("1");
                     else {
                         aNumb = Math.pow(aNumb, bNumb);
                         setTextViewNumb(aNumb);
                     }
                 } else {
                     bNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0 || bNumb == 0.0) {
+                    if (aNumb == 0 || bNumb == 0) {
                         textViewSum.setText("1");
                     } else {
                         aNumb = Math.pow(aNumb, bNumb);
@@ -534,16 +520,16 @@ public class MainActivity extends AppCompatActivity {
 
             case "%":
 
-                if (bNumb != 0.0) {
+                if (bNumb != 0) {
                     aNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0) textViewSum.setText("1");
+                    if (aNumb == 0) textViewSum.setText("1");
                     else {
                         aNumb = aNumb%bNumb;
                         setTextViewNumb(aNumb);
                     }
                 } else {
                     bNumb = Double.parseDouble(textViewSum.getText().toString());
-                    if (aNumb == 0.0 || bNumb == 0.0) {
+                    if (aNumb == 0 || bNumb == 0) {
                         textViewSum.setText("1");
                     } else {
                         aNumb = aNumb%bNumb;
