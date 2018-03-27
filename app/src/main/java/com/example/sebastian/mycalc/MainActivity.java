@@ -64,9 +64,15 @@ public class MainActivity extends AppCompatActivity {
         Button buttonMod = (Button)findViewById(R.id.buttonMod);
         Button buttonStrong = (Button)findViewById(R.id.buttonFactorial);
         Button buttonSqrt = (Button)findViewById(R.id.buttonSqrt);
+
         Button buttonSin = (Button)findViewById(R.id.buttonSin);
         Button buttonCos = (Button)findViewById(R.id.buttonCos);
         Button buttonTan = (Button)findViewById(R.id.buttonTan);
+        Button buttonExp = (Button)findViewById(R.id.buttonExp);
+
+        Button buttonPi = (Button)findViewById(R.id.buttonPi);
+
+        Button buttonChange = (Button)findViewById(R.id.buttonChange);
 
         Button buttonDot = (Button)findViewById(R.id.buttonDot);
         final Button buttonClear = (Button)findViewById(R.id.buttonClear);
@@ -102,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        buttonSum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                calc();
+
+                lastClick = "sum";
+            }
+        });
+
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,16 +202,6 @@ public class MainActivity extends AppCompatActivity {
                     if(isEnabled()) setParam("/");
                 }
                 lastClick = "dev";
-            }
-        });
-
-        buttonSum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                calc();
-
-                lastClick = "sum";
             }
         });
 
@@ -364,6 +371,44 @@ public class MainActivity extends AppCompatActivity {
                    if(isEnabled()) setParam("tan");
                 }
                 lastClick = "tan";
+            }
+        });
+
+        buttonExp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!lastClick.equals("exp") && !textViewSum.getText().equals("")) {
+
+                    if (!textViewDebug.getText().equals("exp") && !textViewDebug.getText().equals("") && !isOld)
+                        calc();
+
+
+                    Double tempNumb = Math.exp(Double.parseDouble(textViewSum.getText().toString()));
+
+                    textViewSum.setText("" + tempNumb);
+                    aNumb = Double.parseDouble(textViewSum.getText().toString());
+
+
+                    if(isEnabled()) setParam("exp");
+                }
+                lastClick = "exp";
+            }
+        });
+
+        buttonPi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textViewSum.setText(String.valueOf(Math.PI));
+            }
+        });
+
+
+        buttonChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!textViewSum.getText().equals("") && Double.parseDouble(textViewSum.getText().toString()) != 0)
+
+                textViewSum.setText( Double.toString(Double.parseDouble(textViewSum.getText().toString()) * -1) );
             }
         });
 
