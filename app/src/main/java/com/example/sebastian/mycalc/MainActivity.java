@@ -75,7 +75,9 @@ public class MainActivity extends AppCompatActivity {
         Button buttonChange = (Button)findViewById(R.id.buttonChange);
 
         Button buttonDot = (Button)findViewById(R.id.buttonDot);
+        Button buttonC = (Button)findViewById(R.id.buttonC);
         final Button buttonClear = (Button)findViewById(R.id.buttonClear);
+
 
         ownOnClickNump(button1);
         ownOnClickNump(button2);
@@ -409,6 +411,21 @@ public class MainActivity extends AppCompatActivity {
                 if(!textViewSum.getText().equals("") && Double.parseDouble(textViewSum.getText().toString()) != 0)
 
                 textViewSum.setText( Double.toString(Double.parseDouble(textViewSum.getText().toString()) * -1) );
+            }
+        });
+
+        buttonC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!textViewSum.getText().toString().equals("")) {
+
+                    textViewSum.setText(textViewSum.getText().toString().substring(0, textViewSum.getText().toString().length() - 1));
+
+                }
+                if(textViewSum.getText().toString().equals("")){
+                    textViewSum.setText("0.0");
+                }
+
             }
         });
 

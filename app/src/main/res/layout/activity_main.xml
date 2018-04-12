@@ -44,18 +44,18 @@
             android:layout_toRightOf="@+id/buttonFactorial"
             android:text="Pi"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonChange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/buttonExp"
-            android:layout_toEndOf="@+id/buttonSin"
-            android:layout_toRightOf="@+id/buttonSin"
+            android:layout_below="@+id/button3"
+            android:layout_toEndOf="@+id/buttonDot"
+            android:layout_toRightOf="@+id/buttonDot"
             android:text="+-"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <Button
             android:id="@+id/buttonExp"
@@ -66,7 +66,7 @@
             android:layout_alignParentStart="true"
             android:text="Exp"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/button5"
@@ -222,26 +222,21 @@
 
         <Button
             android:id="@+id/buttonSum"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/buttonDot"
-            android:layout_toEndOf="@+id/buttonClear"
-            android:layout_toRightOf="@+id/buttonClear"
+            android:layout_below="@+id/buttonChange"
+            android:layout_toEndOf="@+id/buttonC"
+            android:layout_toRightOf="@+id/buttonC"
             android:text="="
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/buttonAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/buttonDot"
-            android:layout_alignBottom="@+id/buttonDot"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_toEndOf="@+id/button2"
-            android:layout_toRightOf="@+id/button2"
+            android:layout_below="@+id/buttonOdd"
+            android:layout_toEndOf="@+id/buttonChange"
+            android:layout_toRightOf="@+id/buttonChange"
             android:text="+"
             android:textSize="30sp" />
 
@@ -274,7 +269,7 @@
             android:layout_alignParentStart="true"
             android:text="^"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonMod"
@@ -285,7 +280,7 @@
             android:layout_toRightOf="@+id/buttonPow"
             android:text="%"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonFactorial"
@@ -297,7 +292,7 @@
             android:layout_toRightOf="@+id/button8"
             android:text="!"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonSqrt"
@@ -308,7 +303,7 @@
             android:layout_toRightOf="@+id/button9"
             android:text="Sqrt"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonSin"
@@ -319,7 +314,7 @@
             android:layout_toStartOf="@+id/buttonMod"
             android:text="Sin"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonCos"
@@ -330,7 +325,7 @@
             android:layout_toStartOf="@+id/buttonFactorial"
             android:text="Cos"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/buttonTan"
@@ -341,7 +336,17 @@
             android:layout_toStartOf="@+id/buttonSqrt"
             android:text="Tan"
             android:textSize="30sp"
-            android:visibility="invisible" />
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonChange"
+            android:layout_toEndOf="@+id/buttonClear"
+            android:layout_toRightOf="@+id/buttonClear"
+            android:text="@string/BackSpace"
+            android:textSize="30sp" />
 
     </RelativeLayout>
 

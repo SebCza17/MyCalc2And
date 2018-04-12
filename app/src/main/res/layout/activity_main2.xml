@@ -259,13 +259,11 @@
 
         <Button
             android:id="@+id/buttonClear"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_above="@+id/buttonMod"
-            android:layout_marginBottom="-10dp"
-            android:layout_marginRight="5dp"
-            android:layout_toEndOf="@+id/buttonPow"
-            android:layout_toRightOf="@+id/buttonPow"
+            android:layout_alignLeft="@+id/buttonSin"
+            android:layout_alignStart="@+id/buttonSin"
+            android:layout_below="@+id/textViewDebug"
             android:text="Clear"
             android:textSize="18sp" />
 
@@ -308,9 +306,9 @@
             android:id="@+id/buttonSqrt"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:layout_alignBottom="@+id/buttonSin"
-            android:layout_alignEnd="@+id/buttonClear"
-            android:layout_alignRight="@+id/buttonClear"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/buttonSin"
             android:text="Sqrt"
             android:textSize="24sp" />
 
@@ -318,9 +316,9 @@
             android:id="@+id/buttonSin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/buttonClear"
-            android:layout_alignStart="@+id/buttonClear"
-            android:layout_below="@+id/buttonClear"
+            android:layout_below="@+id/buttonPow"
+            android:layout_toEndOf="@+id/buttonPow"
+            android:layout_toRightOf="@+id/buttonPow"
             android:text="Sin"
             android:textSize="30sp" />
 
@@ -328,10 +326,9 @@
             android:id="@+id/buttonCos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/buttonFactorial"
-            android:layout_alignBottom="@+id/buttonFactorial"
-            android:layout_alignLeft="@+id/buttonSin"
-            android:layout_alignStart="@+id/buttonSin"
+            android:layout_below="@+id/buttonMod"
+            android:layout_toEndOf="@+id/buttonChange"
+            android:layout_toRightOf="@+id/buttonChange"
             android:text="Cos"
             android:textSize="30sp" />
 
@@ -339,10 +336,9 @@
             android:id="@+id/buttonTan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/buttonChange"
-            android:layout_alignBottom="@+id/buttonChange"
-            android:layout_alignLeft="@+id/buttonCos"
-            android:layout_alignStart="@+id/buttonCos"
+            android:layout_below="@+id/buttonOdd"
+            android:layout_toEndOf="@+id/buttonChange"
+            android:layout_toRightOf="@+id/buttonChange"
             android:text="Tan"
             android:textSize="30sp" />
 
@@ -355,6 +351,16 @@
             android:layout_alignEnd="@+id/buttonPi"
             android:layout_alignRight="@+id/buttonPi"
             android:text="Exp"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textViewDebug"
+            android:text="@string/backspace"
             android:textSize="30sp" />
 
     </RelativeLayout>
