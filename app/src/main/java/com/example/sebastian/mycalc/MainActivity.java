@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!lastClick.equals("add")  && !textViewSum.getText().equals("")) {
-                    if (!textViewDebug.getText().equals("+") && !textViewDebug.getText().equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("odd")  && !textViewSum.getText().equals("")) {
-                    if (!textViewDebug.getText().equals("-") && !textViewDebug.getText().equals("") && !isOld)
+                    if (!textViewDebug.getText().equals("") && !isOld)
                         calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("mult")  && !textViewSum.getText().equals("")) {
-                    if (!textViewDebug.getText().equals("*") && !textViewDebug.getText().equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!lastClick.equals("dev") && !textViewSum.getText().equals("")) {
-                    if (!textViewDebug.getText().equals("/") && !textViewDebug.getText().equals("") && !isOld) calc();
+                    if (!textViewDebug.getText().equals("") && !isOld) calc();
                     if (aNumb == 0.0)
                         aNumb = Double.parseDouble(textViewSum.getText().toString());
                     else if(isOld);
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!lastClick.equals("pow") && !textViewSum.getText().equals("")) {
 
-                    if (!textViewDebug.getText().equals("^") && !textViewDebug.getText().equals("") && !isOld)
+                    if (!textViewDebug.getText().equals("") && !isOld)
                         calc();
 
                     if (aNumb == 0.0)
@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!lastClick.equals("mod") && !textViewSum.getText().equals("")) {
 
-                    if (!textViewDebug.getText().equals("%") && !textViewDebug.getText().equals("") && !isOld)
+                    if (!textViewDebug.getText().equals("") && !isOld)
                         calc();
 
                     if (aNumb == 0.0)
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!lastClick.equals("fact") && !textViewSum.getText().equals("")) {
 
-                    if (!textViewDebug.getText().equals("!") && !textViewDebug.getText().equals("") && !isOld)
+                    if (!textViewDebug.getText().equals("") && !isOld)
                         calc();
 
                         Double tempNumb = Double.parseDouble(textViewSum.getText().toString());
